@@ -12,7 +12,10 @@ class Home extends Component {
     }
 
     render(){
-        return (<div>This is the home page</div>);
+        return (<div>
+                    <div>This is the home page</div>
+                    <LineChartExample />
+            </div>);
     }
 }
 

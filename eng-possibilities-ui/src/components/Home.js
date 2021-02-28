@@ -7,10 +7,6 @@ class Home extends Component {
         super(props);
     }
 
-    componentDidMount(){
-
-    }
-
     render(){
         return (<div>
                     <div>This is the home page</div>

@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import "./LineChartExample.js"
 import LineChartExample from "./LineChartExample.js"
 
+/**
+ * This is the home page to display all the info
+ */
 class Home extends Component {
     constructor(props){
         super(props);
+
+        //what state
+        //state to keep track of the allocations per category (map)
+        //state to keep track of the predicted 10 years
     }
 
     componentDidMount(){

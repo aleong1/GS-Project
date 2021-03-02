@@ -7,6 +7,10 @@
 - https://www.baeldung.com/spring-boot
 - https://www.springboottutorial.com/introduction-to-spring-boot-for-beginners
 
+#### How to Run Backend
+- `mvn install` 
+- `mvn package` to get the target folder to appear
+- `java -jar target/forecast-backend-0.0.1-SNAPSHOT.jar` to run the web server
 #### Let's take a tour....
 
 - /src | You guessed it, this folder holds all of the application code.

@@ -3,6 +3,9 @@
 /.pnp
 .pnp.js
 
+# backend
+**/.idea/
+
 # testing
 /coverage
 
@@ -15,7 +18,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-/eng-possibilities-ui/package-lock.json
+eng-possibilities-ui/package-lock.json
 
 npm-debug.log*
 yarn-debug.log*

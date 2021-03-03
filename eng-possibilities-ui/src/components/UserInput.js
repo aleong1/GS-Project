@@ -8,7 +8,7 @@ import React, { Component } from 'react';
  * @param {Map<string, number>} allocations a map keyed on the cateogory, which points to a percentage value
  */
 class UserInput extends Component {
-
+    
 
 }
 

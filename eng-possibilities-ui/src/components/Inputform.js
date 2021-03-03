@@ -31,6 +31,7 @@ class Inputform extends Component {
               type='text'
               name={category}
               onChange={this.myChangeHandler}
+              size="15"
             /> </p>
           </div>))}
           <p>Current Total: {Object.values(this.props.allocations).reduce((acc, value) => acc + value[0], 0 )} </p>

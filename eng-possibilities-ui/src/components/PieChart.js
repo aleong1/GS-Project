@@ -21,6 +21,7 @@ class PieChart extends Component {
         },
         plotOptions: {
           pie: {
+            size: "100%",
             dataLabels: {
               enabled: true
             },

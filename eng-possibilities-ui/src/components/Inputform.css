@@ -3,32 +3,34 @@ body {
     font-family: 'Helvetica', sans-seri;
 }
 
-.input {
+.category {
     display: block;
-    height: 600px;
-    width: 400px;
     opacity: 1;
     background-color: rgba(200, 220, 250, 0.5);
-    padding-top: 10px;
-    padding-right: 20px;
+    width: 400px;
+    font-size: 20px;
+    padding-top: 1px;
+    padding-right: 5px;
     padding-left: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
     border-right-width: 1px;
     border-top-width: 1px;
-    border-top-left-radius: 20px;
+    /* border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 20px; */
 }
 
-.category {
-    font-size: 16px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+.input {
+    display: block;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+    height: 800px;
+    width: 1500px;
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 30px;
 }

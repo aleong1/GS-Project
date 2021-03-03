@@ -9,7 +9,7 @@ class LineChartExample extends Component {
     this.state = {
       chartOptions: {
         title: {
-          text: 'Invesment Forecaster'
+          text: 'Investment Forecaster'
         },
         subtitle: {
           text: 'Customize your investments and view the potential growth of $10,000 over ten years from 2021 to 2031'
@@ -34,13 +34,13 @@ class LineChartExample extends Component {
           }
         },
         series: [
-          { data: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 20000] }
+          { data: this.props.newprediction }
         ],
       }
     }
   }
 
-  updateSeries = () => {
+/*   updateSeries = () => {
     this.setState({
       chartOptions: {
         series: [
@@ -49,7 +49,7 @@ class LineChartExample extends Component {
       }
     }
     )
-  }
+  } */
 
 
   render() {

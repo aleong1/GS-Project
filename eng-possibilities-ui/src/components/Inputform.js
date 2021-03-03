@@ -75,61 +75,68 @@ class Inputform extends Component {
   }
   render() {
     return (
+      <div
+    style={{
+        position: 'absolute', left: '50%',
+        transform: 'translate(-50%)'
+    }}
+    >
       <form>
         <h1>Enter the percent for each category that you want to invest:</h1>
-        <p>Energy (min is 5):</p>
+        <p>Energy (min is 5): <tab></tab>
         <input
           type='text'
           name='energy'
           onChange={this.myChangeHandler}
-        />
-        <p>Technology (min is 6):</p>
+        /> </p>
+        <p>Technology (min is 6): <tab></tab>
         <input
           type='text'
           name='technology'
           onChange={this.myChangeHandler}
-        />
-        <p>Financial Services (min is 4):</p>
+        /> </p>
+        <p>Financial Services (min is 4): <tab></tab>
         <input
           type='text'
           name='finservices'
           onChange={this.myChangeHandler}
-        />
-        <p>Real Estate (min is 15):</p>
+        /> </p>
+        <p>Real Estate (min is 15): <tab></tab>
         <input
           type='text'
           name='realestate'
           onChange={this.myChangeHandler}
-        />
-        <p>Pharmaceuticals (min is 10):</p>
+        /></p>
+        <p>Pharmaceuticals (min is 10): <tab></tab>
         <input
           type='text'
           name='pharmaceuticals'
           onChange={this.myChangeHandler}
-        />
-        <p>Airline (min is 10):</p>
+        /></p>
+        <p>Airline (min is 10): <tab></tab>
         <input
           type='text'
           name='airline'
           onChange={this.myChangeHandler}
-        />
-        <p>Retail (min is 10):</p>
+        /></p>
+        <p>Retail (min is 10): <tab></tab>
         <input
           type='text'
           name='retail'
           onChange={this.myChangeHandler}
-        />
-        <p>Gaming (min is 12):</p>
+        /></p>
+        <p>Gaming (min is 12): <tab></tab>
         <input
           type='text'
           name='gaming'
           onChange={this.myChangeHandler}
-        />
+        /> </p>
         <input
           type='submit'
         />
         {this.state.errormessage}
       </form>
+      </div>
     );
   }
 }

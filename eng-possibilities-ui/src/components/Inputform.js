@@ -13,17 +13,65 @@ class Inputform extends Component {
       airline: null,
       retail: null,
       gaming: null,
+      errormessage: ''
     };
   }
   myChangeHandler = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    let err = '';
     if (!Number(val)) {
       alert("The percentage must be a number");
     }
     if (nam === "energy") {
-    this.setState({[nam]: val});
+      if (val >= 5) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
     }
+    if (nam === "technology") {
+      if (val >= 6) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
+    }
+    if (nam === "finservices") {
+      if (val >= 4) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
+    }
+    if (nam === "realestate") {
+      if (val >= 15) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
+    }
+    if (nam === "gaming") {
+      if (val >= 12) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
+    }
+    else {
+      if (val >= 10) {
+        this.setState({[nam]: val});
+      }
+      else {
+        err = <strong>Percentage is below min</strong>;
+      }
+    }
+    this.setState({errormessage: err});
   }
   render() {
     return (
@@ -80,6 +128,7 @@ class Inputform extends Component {
         <input
           type='submit'
         />
+        {this.state.errormessage}
       </form>
     );
   }

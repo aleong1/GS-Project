@@ -33,7 +33,7 @@ class Inputform extends Component {
             /> </p>
           </div>))}
           <p>Current Total: {Object.values(this.props.allocations).reduce((acc, value) => acc + value[0], 0 )} </p>
-          <button onClick = {this.props.handleSubmit}>submit</button>
+          <button onClick = {this.props.handleSubmit}>Submit</button>
       </div>
     );
   }

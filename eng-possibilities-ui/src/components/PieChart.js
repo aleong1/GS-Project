@@ -19,8 +19,17 @@ class PieChart extends Component {
           type: "pie",
           backgroundColor: 'rgba(0,0,0,0)'
         },
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: true
+            },
+            enableMouseTracking: true
+          }
+        },
         series: [
           {
+            name: 'Percent allocated',
             data: this.props.data
           }
         ]

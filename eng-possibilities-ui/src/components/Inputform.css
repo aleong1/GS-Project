@@ -6,7 +6,7 @@ body {
 .category {
     display: block;
     opacity: 1;
-    background-color: rgba(200, 220, 250, 0.5);
+    background-color: rgba(181, 200, 236, 0.534);
     width: 400px;
     font-size: 20px;
     padding-top: 1px;
@@ -27,8 +27,8 @@ body {
     display: block;
     opacity: 1;
     background-color: rgba(0, 0, 0, 0);
-    height: 800px;
-    width: 1500px;
+    height: 750px;  /* originally 800 */
+    width: 600px;   /* originally 1500 */
 }
 
 h1 {

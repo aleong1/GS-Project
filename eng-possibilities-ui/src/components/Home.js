@@ -128,8 +128,11 @@ class Home extends Component {
 
         return (
         <div className = "Home-background">
-        <div className = "Home-container">
-                    
+            <div className = "Home-header">
+                <h1> Forecast Your Investments </h1>
+                <h5> ~~See them grow~~ </h5>
+            </div>
+        <div className = "Home-container">       
                     <LineChart series = {[
                                             { data: this.state.prediction,
                                             name: "Investment Trends" }
@@ -144,8 +147,7 @@ class Home extends Component {
                                 updateAllocation = {this.updateAllocation}
                                 handleSubmit = {this.handleSubmit}
                         />
-                            <PieChart data = {this.getPercentAllocations()}/>
-                        
+                        <PieChart data = {this.getPercentAllocations()}/>
                     </div>
                     <LineChart newprediction = {this.state.prediction}
                                       title = "Historical Trend"

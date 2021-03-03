@@ -1,16 +1,27 @@
 .Home-container{
-    margin: 3em;
+    padding: 3em;
 }
 
 .Home-background{ 
+    width: 100vw;
+    min-height: 100vw;
     background-image: url('../logo.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60%;
+    background-color: rgb(222, 232, 233);
 }
 
 .Home-userInputContainer {
     display: flex;
     align-items: center;
-    height: 900px;
+    height: 740px; /* originally 900 */
+}
+
+.Home-header {
+    padding: 25px;
+    text-align: center;
+    background: #097258;
+    color: white;
+    font-size: 15px;
 }

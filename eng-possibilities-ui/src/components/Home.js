@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import "./LineChartExample.js"
-import LineChartExample from "./LineChartExample.js"
+import "./LineChart.js"
+import LineChart from "./LineChart.js"
 import Inputform from "./Inputform.js"
 
 /**
@@ -24,7 +24,8 @@ class Home extends Component {
                 "Gaming": [0, 0],
                 "Energy": [0, 0]
             },
-            prediction : [0,0,0,0,0,0,0,0,0,0,0]
+            prediction : [0,0,0,0,0,0,0,0,0,0,0],
+            historicalReturns: [],
         };
     }
 
@@ -42,8 +43,10 @@ class Home extends Component {
         .then(response => response.json())
         .then(data => {this.setState({
                             allocations: data.reduce(
-                                (i, dataValue) => ({ ...i, [dataValue.category]: [0, parseInt(dataValue.minimum)]}), {})
-                            }); });
+                                (i, dataValue) => ({ ...i, [dataValue.category]: [0, parseInt(dataValue.minimum)]}), {}),
+                            historicalReturns : data.map((dataValue) => ({data: dataValue.data.map((returnVal) => parseFloat(returnVal)), 
+                                                                        name: dataValue.category}))}
+                            )});
     }
 
     //updates the allocation given the input and output
@@ -103,13 +106,33 @@ class Home extends Component {
             .then(data => {this.setState({prediction: data['response']})});
     }
 
+    getHistoricalTrend = () => {
+        
+    }
     render(){
+        console.log("historical returns");
+        console.log(this.state.historicalReturns);
+        console.log(this.state.prediction);
         return (<div>
-                    <LineChartExample newprediction = {this.state.prediction}
+                    <LineChart series = {[
+                                                    { data: this.state.prediction,
+                                                    name: "Investment Trends" }
+                                                ]}
+                                      categories =  {['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028','2029' ,'2030','2031']}
+                                      title = "Investment Forecaster"
+                                      description = "Customize your investments and view the potential growth of $10,000 over ten years from 2021 to 2031"
+                                      yAxisLabel = "Value ($)"
                     />
                     <Inputform allocations = {this.state.allocations}
                                updateAllocation = {this.updateAllocation}
                                handleSubmit = {this.handleSubmit}
+                    />
+                    <LineChart newprediction = {this.state.prediction}
+                                      title = "Historical Trend"
+                                      description = "Returns from the past 10 years"
+                                      series = {this.state.historicalReturns}
+                                      categories = {['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017','2018' ,'2019','2020']}
+                                      yAxisLabel = "Percent Return (%)"
                     />
             </div>);
     }

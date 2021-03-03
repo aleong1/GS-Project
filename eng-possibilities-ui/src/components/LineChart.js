@@ -37,7 +37,7 @@ class LineChart extends Component {
       plotOptions: {
         line: {
           dataLabels: {
-            enabled: true
+            enabled: false
           },
           enableMouseTracking: true
         }

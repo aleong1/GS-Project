@@ -2,6 +2,13 @@
     margin: 7.5em;
 }
 
+.Home-background{ 
+    background-image: url('../logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
 .Home-userInputContainer {
     display: flex;
     align-items: center;

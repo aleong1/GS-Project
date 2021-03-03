@@ -16,7 +16,8 @@ class PieChart extends Component {
             text: "Percent Allocations"
           },
         chart: {
-          type: "pie"
+          type: "pie",
+          backgroundColor: 'rgba(0,0,0,0)'
         },
         series: [
           {

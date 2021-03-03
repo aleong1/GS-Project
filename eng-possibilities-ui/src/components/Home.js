@@ -26,7 +26,7 @@ class Home extends Component {
                 "Gaming": [0, 0],
                 "Energy": [0, 0]
             },
-            prediction : [0,0,0,0,0,0,0,0,0,0,0],
+            prediction : [0,0,0,0,0,0,0,0,0,0],
             historicalReturns: [],
         };
     }
@@ -126,15 +126,17 @@ class Home extends Component {
 
     render(){
 
-        return (<div className = "Home-container">
+        return (
+        <div className = "Home-background">
+        <div className = "Home-container">
                     
                     <LineChart series = {[
                                             { data: this.state.prediction,
                                             name: "Investment Trends" }
                                         ]}
-                                      categories =  {['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028','2029' ,'2030','2031']}
+                                      categories =  {['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028','2029' ,'2030']}
                                       title = "Investment Forecaster"
-                                      description = "Customize your investments and view the potential growth of $10,000 over ten years from 2021 to 2031"
+                                      description = "Customize your investments and view the potential growth of $10,000 from 2021 to 2030"
                                       yAxisLabel = "Value ($)"
                     />
                     <div className = "Home-userInputContainer">
@@ -151,6 +153,7 @@ class Home extends Component {
                                       categories = {['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017','2018' ,'2019','2020']}
                                       yAxisLabel = "Percent Return (%)"
                     />
+            </div>
             </div>);
     }
 }

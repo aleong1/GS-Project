@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./Inputform.css";
 
 class Inputform extends Component {
 
@@ -13,7 +14,7 @@ class Inputform extends Component {
     console.log(Object.values(this.props.allocations));
     console.log(Object.values(this.props.allocations).reduce((acc, value) => acc + value[0], 0 ));
     return (
-      <div style={{ position: 'absolute', left: '50%', transform: 'translate(-50%)'}} >
+      <div style={{ position: 'absolute', left: '50%', transform: 'translate(-50%)'}} className="input">
         <h1>Enter the percent for each category that you want to invest:</h1>
         { Object.entries(this.props.allocations).map(([category, values]) => (
           <div key = {category}>

@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import "./Inputform.css";
 
+/**
+ * This class takes in the user input for percent allocations
+ * 
+ * Proptypes
+ * @param {Object} allocations where the key is a {String} category mapped to an Array<Number> of values where values[0] is the user input
+ *                 percent allocation and values[1] is the minimum percent required
+ * @param {(String, String) => void} updateAllocation updates the state in home with the user input where param1 = category, param2 = percent
+ * @param {() => void} handleSubmit function to call when submitting
+ * 
+ */
 class Inputform extends Component {
 
   myChangeHandler = (event) => {
@@ -11,13 +21,11 @@ class Inputform extends Component {
   }
 
   render() {
-    console.log(Object.values(this.props.allocations));
-    console.log(Object.values(this.props.allocations).reduce((acc, value) => acc + value[0], 0 ));
     return (
-      <div style={{ position: 'absolute', left: '50%', transform: 'translate(-50%)'}} className="input">
+      <div className="input">
         <h1>Enter the percent for each category that you want to invest:</h1>
         { Object.entries(this.props.allocations).map(([category, values]) => (
-          <div key = {category}>
+          <div key = {category} className="category">
             <p>{category} (min is {values[1]}): 
             <input
               type='text'

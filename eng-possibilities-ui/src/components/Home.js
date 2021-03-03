@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import "./LineChartExample.js"
-import LineChartExample from "./LineChartExample.js"
-import Inputform from "./Inputform.js"
+import LineChart from "./LineChart.js";
+import Inputform from "./Inputform.js";
+import PieChart from "./PieChart.js";
+
+import "./Home.css";
 
 /**
  * This is the home page to display all the info
@@ -24,7 +26,8 @@ class Home extends Component {
                 "Gaming": [0, 0],
                 "Energy": [0, 0]
             },
-            prediction : [0,0,0,0,0,0,0,0,0,0,0]
+            prediction : [0,0,0,0,0,0,0,0,0,0],
+            historicalReturns: [],
         };
     }
 
@@ -34,7 +37,9 @@ class Home extends Component {
     }
 
 
-    //sends a get request to get the historical data
+    /**
+     * Updates the state with the allocation requirements and historical returns
+     */
     getHistoricalData = () => {
 
         //get request
@@ -42,11 +47,17 @@ class Home extends Component {
         .then(response => response.json())
         .then(data => {this.setState({
                             allocations: data.reduce(
-                                (i, dataValue) => ({ ...i, [dataValue.category]: [0, parseInt(dataValue.minimum)]}), {})
-                            }); });
+                                (i, dataValue) => ({ ...i, [dataValue.category]: [0, parseInt(dataValue.minimum)]}), {}),
+                            historicalReturns : data.map((dataValue) => ({data: dataValue.data.map((returnVal) => parseFloat(returnVal)), 
+                                                                        name: dataValue.category}))}
+                            )});
     }
 
-    //updates the allocation given the input and output
+    /**
+     * Updates the allocation for a particular category
+     * @param {String} category the category to update
+     * @param {String} userInput the percentage allocation the user inputted
+     */
     updateAllocation = (category, userInput) => {
         const tempAllocations= {...this.state.allocations};
         console.log("update allocation");
@@ -59,7 +70,10 @@ class Home extends Component {
         console.log("Updated state: " + this.state.allocations[category]);
     }
 
-    //
+    /**
+     * Sends a post request to the backend given user input
+     * Will send an alert (no post request) if the values are invalid
+     */
     handleSubmit = () => {
         let sum = 0;
         let isValid = true;
@@ -71,12 +85,8 @@ class Home extends Component {
             sum += this.state.allocations[category][0];
         }
 
-        console.log("submit");
-        console.log(this.state);
-        if(sum !== 100){
-            alert("Total Sum is " + sum);
-        } else if (!isValid){
-            alert("Not enough allocation for one of the fields!");
+        if(sum !== 100 || !isValid){
+            alert("Invalid Input: Check if total is 100 and allocation is at least the minimum!");
         } else {
             console.log("in if statement");
             console.log(this.state);
@@ -84,13 +94,16 @@ class Home extends Component {
         }
     }
 
-    //send a post request to get the predicted output
+    /**
+     * Sends a post request and updates the state predictions with the response
+     */
     postForecast = () => {
+
         const bodyRequest = {};
-        console.log(this.state);
         for (const category in this.state.allocations) {
             bodyRequest[category] = this.state.allocations[category][0];
         }
+
         const requestOptions = {
             method: 'POST',
             
@@ -98,19 +111,50 @@ class Home extends Component {
             },
             body: JSON.stringify({request: bodyRequest})
         };
+
         fetch('http://localhost:8080/api/v1/forecast/', requestOptions)
             .then(response => response.json())
             .then(data => {this.setState({prediction: data['response']})});
     }
 
+    /**
+     * Returns an array following the format to input to PieChart for percent allocations
+     */
+    getPercentAllocations = () => {
+        return Object.entries(this.state.allocations).map(([category, values]) => ({y: values[0], name: category}));
+    }
+
     render(){
-        return (<div>
-                    <LineChartExample newprediction = {this.state.prediction}
+
+        return (
+        <div className = "Home-background">
+        <div className = "Home-container">
+                    
+                    <LineChart series = {[
+                                            { data: this.state.prediction,
+                                            name: "Investment Trends" }
+                                        ]}
+                                      categories =  {['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028','2029' ,'2030']}
+                                      title = "Investment Forecaster"
+                                      description = "Customize your investments and view the potential growth of $10,000 from 2021 to 2030"
+                                      yAxisLabel = "Value ($)"
                     />
-                    <Inputform allocations = {this.state.allocations}
-                               updateAllocation = {this.updateAllocation}
-                               handleSubmit = {this.handleSubmit}
+                    <div className = "Home-userInputContainer">
+                        <Inputform allocations = {this.state.allocations}
+                                updateAllocation = {this.updateAllocation}
+                                handleSubmit = {this.handleSubmit}
+                        />
+                            <PieChart data = {this.getPercentAllocations()}/>
+                        
+                    </div>
+                    <LineChart newprediction = {this.state.prediction}
+                                      title = "Historical Trend"
+                                      description = "Returns from the past 10 years"
+                                      series = {this.state.historicalReturns}
+                                      categories = {['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017','2018' ,'2019','2020']}
+                                      yAxisLabel = "Percent Return (%)"
                     />
+            </div>
             </div>);
     }
 }

@@ -27,7 +27,7 @@ public class InvestingForecastService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         ArrayList read = (ArrayList) objectMapper.readValue(Paths
-                .get("YOUR PATH/investment-details.json")
+                .get("C:/Users/cjjin/Goldman Sachs Project/GS-Project/eng-possibilities-svcs-backend/eng-possibilities-svcs-tests/src/main/resources/data/investment-details.json")
                 .toFile(), Map.class).get("Investments");
 
         String str = objectMapper.writeValueAsString(read);
@@ -46,13 +46,13 @@ public class InvestingForecastService {
     }
 
     public List<Double> getForeCast(Map<String, Double> userRequest, List<InvestmentDetail> details) {
+        System.out.println(userRequest);
         Map<Integer, Double> totalYearAmount = new HashMap<>();
         for (InvestmentDetail i : details) {
             //user input for category i
             double userInvestmentPercentage = userRequest.get(i.getCategory());
             double userInvestmentDollars = (userInvestmentPercentage / 100) * 10000;
             for (int x = 0; x < 10; x++) {
-
                 //historical interest data for category i in year x
                 double historicalInterest = Double.valueOf(i.getData().get(x));
                 double currentInterest = (historicalInterest / 100) * userInvestmentDollars;

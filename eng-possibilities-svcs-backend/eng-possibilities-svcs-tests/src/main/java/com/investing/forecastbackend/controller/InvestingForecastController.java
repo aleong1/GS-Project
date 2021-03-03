@@ -22,9 +22,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/forecast")
+@CrossOrigin(origins = "http://localhost:3000/")
 @AllArgsConstructor
 public class InvestingForecastController {
     private static final Logger log = LoggerFactory.getLogger(InvestingForecastController.class);

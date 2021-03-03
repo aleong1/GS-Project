@@ -27,6 +27,12 @@ class Inputform extends Component {
   }
   render() {
     return (
+      <div
+    style={{
+        position: 'absolute', left: '50%',
+        transform: 'translate(-50%)'
+    }}
+    >
       <form>
         <h1>Enter the percent for each category that you want to invest:</h1>
         <p>Energy (min is 5):</p>
@@ -81,6 +87,7 @@ class Inputform extends Component {
           type='submit'
         />
       </form>
+      </div>
     );
   }
 }

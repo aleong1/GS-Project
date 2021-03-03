@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./LineChartExample.js"
 import LineChartExample from "./LineChartExample.js"
+import Inputform from "./Inputform.js"
 
 /**
  * This is the home page to display all the info
@@ -24,6 +25,7 @@ class Home extends Component {
         return (<div>
                     <div>This is the home page</div>
                     <LineChartExample />
+                    <Inputform />
             </div>);
     }
 }

@@ -27,7 +27,7 @@ public class InvestingForecastService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         ArrayList read = (ArrayList) objectMapper.readValue(Paths
-                .get("C:/Users/cjjin/Goldman Sachs Project/GS-Project/eng-possibilities-svcs-backend/eng-possibilities-svcs-tests/src/main/resources/data/investment-details.json")
+                .get("/users/gabriellamunger/gs-eps/GS-Project/eng-possibilities-svcs-backend/eng-possibilities-svcs-tests/src/main/resources/data/investment-details.json")
                 .toFile(), Map.class).get("Investments");
 
         String str = objectMapper.writeValueAsString(read);
